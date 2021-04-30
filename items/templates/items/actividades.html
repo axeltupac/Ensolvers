@@ -1,0 +1,24 @@
+{% extends "items/base_2.html" %}
+
+{% block page_header %}
+<h3>Mis Actividades</h3>
+
+
+
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    {% for actividad in actividades %}
+    <li>  
+    <div class="form-group form-check">
+        <label class="form-check-label" for="exampleCheck1"> {{actividad}} </label>
+    <div align="center"><input type="checkbox" class="form-check-input" id="exampleCheck1"></div>
+       
+      </div>
+    </li>
+</ul>
+   {% empty %}
+   <h5>no hay actividades</h5>
+   {% endfor %}
+{% endblock content %} 

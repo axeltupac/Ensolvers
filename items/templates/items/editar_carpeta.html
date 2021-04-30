@@ -1,0 +1,10 @@
+{% extends "items/base_2.html" %}
+
+{% block content %}
+<form action="{% url 'items:editar_carpeta' carpeta %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name= "submit">Guardar Cambio </button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "items/base_2.html" %}
+{% block content %}
+    {% if messages %}
+    {% for mensaje in messages %}
+    <div class="alert {{ mensaje.tags }} alert-dismissible" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {{ mensaje }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form class="form-inline my-2 my-lg-0" method="POST">
+        {% csrf_token %}
+    <input class="form-control me-2" type="text" placeholder="Crea carpeta" aria-label="Search" name="carpeta">
+    <button class="btn btn-outline-secondary" type="submit">Crear Nueva Carpeta</button>
+    </form>
+    <table class="table table-bordered">
+    {% for carpeta  in carpetas%}
+        <tr>
+        <td><a href="{% url 'items:carpeta' carpeta.id %}">{{ carpeta.carpeta }} </a></td>
+        
+        <td><center><small><a href="{% url 'items:eliminar_carpeta' carpeta.id %}"> eliminar</a></small></center>
+            <center><small><a href="{% url 'items:editar_carpeta' carpeta.id %}"> editar</a></small></center> </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

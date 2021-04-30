@@ -1,0 +1,11 @@
+{% extends "items/base_2.html" %}
+
+{% block content %}
+<form action="{% url 'items:editar' actividad %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name= "submit">Guardar Cambio </button>
+    <a href="{% url 'items:eliminar' actividad %}"> eliminar</a>
+</form>
+
+{% endblock content %}
